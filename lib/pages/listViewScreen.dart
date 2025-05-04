@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/email.dart';
+import 'emailDetailsScreen.dart'; // Import EmailDetailsScreen
 
 class ListViewScreen extends StatelessWidget {
   final String userEmail;
@@ -33,27 +34,11 @@ class ListViewScreen extends StatelessWidget {
                   subtitle: Text(email.senderName),
                   trailing: Text(email.sentDate),
                   onTap: () {
-                    // Show email details in a dialog
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text(email.subject),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Sender Email: ${email.senderEmail}'),
-                            Text('Sent Date: ${email.sentDate}'),
-                            const SizedBox(height: 8),
-                            Text('Details: ${email.details}'),
-                          ],
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: const Text('Close'),
-                          ),
-                        ],
+                    // Navigate to EmailDetailsScreen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EmailDetailsScreen(email: email),
                       ),
                     );
                   },

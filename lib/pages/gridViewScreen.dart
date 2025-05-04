@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math'; // Import to generate random numbers
 import '../models/email.dart';
+import 'emailDetailsScreen.dart'; // Ensure this is present
 
 class GridViewScreen extends StatelessWidget {
   const GridViewScreen({super.key});
@@ -33,22 +34,10 @@ class GridViewScreen extends StatelessWidget {
             elevation: 4,
             child: InkWell(
               onTap: () {
-                // Show email details when tapped
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text(email.subject),
-                    content: Text(
-                      'From: ${email.senderName}\n'
-                      'Email: ${email.senderEmail}\n\n'
-                      '${email.details}',
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text('Close'),
-                      ),
-                    ],
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EmailDetailsScreen(email: email),
                   ),
                 );
               },
