@@ -15,18 +15,19 @@ class mainScreen extends StatelessWidget {
       body: Stack(
         children: [
           Image.asset(
-            'assets/background.jpeg',
+            'background.jpeg',
             fit: BoxFit.cover,
             height: double.infinity,
             width: double.infinity,
           ),
-          Positioned(bottom: 10.0, left: 10.0,
+          Positioned(
+            bottom: 10.0,
+            left: 10.0,
             child: CircleAvatar(
               radius: 48.0,
-              backgroundImage: AssetImage('assets/oman.jpg'),
+              backgroundImage: AssetImage('oman.jpg'),
             ),
           ),
-
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -34,22 +35,24 @@ class mainScreen extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Text('ListView'),
-                CircleAvatar(
-                  radius: 40,
-                  child: IconButton(
-                    icon: Icon(Icons.list, color: Colors.white),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ListViewScreen()
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                ],
+                    Text('ListView'),
+                    CircleAvatar(
+                      radius: 40,
+                      child: IconButton(
+                        icon: Icon(Icons.list, color: Colors.white),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ListViewScreen(
+                                  userEmail:
+                                      "yaseen@example.com"), // Pass Yaseen's email
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +66,8 @@ class mainScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => GridViewScreen(),
+                              builder: (context) =>
+                                  const GridViewScreen(), // Navigate to GridViewScreen
                             ),
                           );
                         },
@@ -84,7 +88,7 @@ class mainScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => LoginScreen()),
-                                (route) => false,
+                            (route) => false,
                           );
                         },
                       ),
